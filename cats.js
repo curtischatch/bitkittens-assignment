@@ -12,13 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }).done(function(responseData) {
       console.log(responseData)
       responseData.cats.forEach(function(cat) {
-        var listImg = document.createElement('img')
+        var listImg = document.createElement('img');
+        var listAlt = document.createElement('alt');
         listImg.src = cat.photo
+        listAlt.alt = '@(cat.name)'
         box.append(listImg)
+        box.append(listAlt)
+
       })
     });
-
-
 
   });
 
