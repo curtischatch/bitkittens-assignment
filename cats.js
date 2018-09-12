@@ -1,15 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-
-  var summonbtn = document.querySelector('button.summon-cats')
+  // var catBox = querySelector('cat-box')
+  var summonbtn =  document.querySelector('button.summon-cats')
 
   summonbtn.addEventListener('click', function(){
-    console.log("success")
-  })
+    $.ajax({
+      url: 'http://bitkittens.herokuapp.com/cats.json',
+      method: 'GET',
+      dataType: 'JSON'
+    }).done(function(responseData) {
+      console.log(responseData)
+    });
+
+  });
 
 
 
-  
+
 
 
 
