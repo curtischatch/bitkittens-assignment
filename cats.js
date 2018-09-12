@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // var catBox = querySelector('cat-box')
   var summonbtn =  document.querySelector('button.summon-cats')
-  var box = document.querySelector('#cat1')
+
 
   summonbtn.addEventListener('click', function(){
     $.ajax({
@@ -10,26 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
       method: 'GET',
       dataType: 'JSON'
     }).done(function(responseData) {
-      console.log(responseData)
-      responseData.cats.forEach(function(cat) {
+      var catData = responseData.cats;
+      var box = document.querySelectorAll('.cat-box');
+      for (var i = 0; i < catData.length; i++) {
         var listImg = document.createElement('img');
-        var listAlt = document.createElement('alt');
-        listImg.src = cat.photo
-        listAlt.alt = '@(cat.name)'
-        box.append(listImg)
-        box.append(listAlt)
-
-      })
-    });
-
+        listImg.src = catData[i].photo;
+        listImg.alt = catData[i].name;
+        box[i].append(listImg);
+      }
+    })
   });
-
-
-
-
-
-
-
-
-
 })
